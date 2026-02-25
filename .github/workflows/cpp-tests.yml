@@ -8,6 +8,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Compile Tests
-      run: g++ -o run_tests tests.cpp
+      run: g++ -o run_tests tests.cpp -I.
     - name: Run Tests
       run: ./run_tests
