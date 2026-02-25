@@ -1,0 +1,25 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class Transport {
+  # string name
+  # double speed
+  + {abstract} void performSpecialAction1()
+  + void printInfo()
+}
+
+class Car extends Transport {
+  + void performSpecialAction1() 
+  + void turboBoost()
+}
+
+class Bicycle extends Transport {
+  + void performSpecialAction1()
+}
+
+class TransportFactory {
+  + {static} shared_ptr<Transport> createTransport(type, name, ...)
+}
+
+TransportFactory ..> Transport : creates
+@enduml
