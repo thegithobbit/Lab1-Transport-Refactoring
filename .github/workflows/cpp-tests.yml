@@ -1,0 +1,13 @@
+name: C++ CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Compile Tests
+      run: g++ -o run_tests tests.cpp
+    - name: Run Tests
+      run: ./run_tests
