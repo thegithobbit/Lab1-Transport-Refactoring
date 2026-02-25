@@ -1,20 +1,49 @@
 @startuml
 skinparam classAttributeIconSize 0
+skinparam linetype ortho
 
 abstract class Transport {
+  # string type
   # string name
+  # int number
   # double speed
   + {abstract} void performSpecialAction1()
+  + {abstract} void performSpecialAction2()
   + void printInfo()
 }
 
-class Car extends Transport {
-  + void performSpecialAction1() 
-  + void turboBoost()
+class LandTransport extends Transport {
+  # int wheels
+  # int passengers
 }
 
-class Bicycle extends Transport {
-  + void performSpecialAction1()
+class Car extends LandTransport {
+  + void performSpecialAction1() // turboBoost
+  + void performSpecialAction2() // drift
+}
+
+class Bus extends LandTransport {
+  + void performSpecialAction1() // openDoors
+}
+
+class Truck extends LandTransport {
+  + void performSpecialAction1() // loadCargo
+}
+
+class Bicycle extends LandTransport {
+  + void performSpecialAction1() // pedal
+}
+
+class Train extends LandTransport {
+  + void performSpecialAction1() // depart
+}
+
+class Plane extends Transport {
+  + void performSpecialAction1() // takeOff
+}
+
+class Boat extends Transport {
+  + void performSpecialAction1() // dock
 }
 
 class TransportFactory {
