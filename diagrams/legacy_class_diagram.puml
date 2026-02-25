@@ -1,1 +1,37 @@
+@startuml
+abstract class Transport {
+  # string type
+  # string name
+  # int number
+  + printInfo()
+  + calculateRange()
+  + getPriority()
+}
 
+class LandTransport extends Transport {
+  # int wheels
+  # int passengers
+  + move()
+}
+
+class Car extends LandTransport {
+  - double enginePower
+  + turboBoost()
+  + drift()
+}
+
+class Bus extends LandTransport {
+  - double routeLength
+  + openDoors()
+}
+
+class Plane extends Transport {
+  - double wingspan
+  + takeOff()
+}
+
+Transport <|-- Boat
+LandTransport <|-- Truck
+LandTransport <|-- Bicycle
+LandTransport <|-- Train
+@enduml
