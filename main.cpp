@@ -1,39 +1,22 @@
 #include <iostream>
 #include <vector>
-#include <string>
 #include <memory>
 #include "TransportClasses.h"
-
-void showMenu() {
-    cout << "\n--- Transport Manager 2026 ---\n";
-    cout << "1 - Show all transports\n";
-    cout << "2 - Perform Special Action (Honk/Turbo/etc)\n";
-    cout << "0 - Exit\nChoice: ";
-}
+#include "TransportFactory.h"
 
 int main() {
-    vector<shared_ptr<Transport>> transports;
+    std::vector<std::shared_ptr<Transport>> fleet;
 
-    transports.push_back(make_shared<Car>("Tesla Model S", 101, "Electric", 250, 2100, 5, 1020));
-    transports.push_back(make_shared<Bicycle>("Giant", 202, 30, 12));
+    fleet.push_back(TransportFactory::createTransport("Car", "Tesla", 777, 200, 2000));
+    fleet.push_back(TransportFactory::createTransport("Plane", "Boeing", 101, 800, 50000));
+    fleet.push_back(TransportFactory::createTransport("Bicycle", "Pride", 12, 25, 15));
 
-    int choice;
-    while(true){
-        showMenu();
-        cin >> choice;
-        if(choice == 0) break;
-
-        if(choice == 1) {
-            for(const auto& t : transports) t->printInfo();
-        } 
-        else if(choice == 2) {
-            int idx;
-            cout << "Enter index (0-" << transports.size()-1 << "): ";
-            cin >> idx;
-            if(idx >= 0 && idx < transports.size()) {
-                transports[idx]->performSpecialAction1();
-            }
-        }
+    std::cout << "--- Our Refactored Fleet ---\n";
+    for (const auto& vehicle : fleet) {
+        vehicle->printInfo();
+        vehicle->performSpecialAction1(); 
+        std::cout << "--------------------------\n";
     }
+
     return 0;
 }
