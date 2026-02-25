@@ -32,7 +32,7 @@ public:
     }
 
     // застосуємо поліморфні методи замість dynamic_cast
-    virtual void performSpecialAction1() { honk(); } // Основна дія
+    virtual void performSpecialAction1() { honk(); }
     virtual void performSpecialAction2() { cout << name << " performs default action.\n"; }
 
     virtual void honk() const { cout << name << " honks!\n"; }
@@ -59,3 +59,4 @@ public:
 };
 
 #endif
+
