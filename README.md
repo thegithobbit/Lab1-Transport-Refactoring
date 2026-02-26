@@ -1,3 +1,5 @@
+![C++ CI](https://github.com/thegithobbit/Lab1-Transport-Refactoring/actions/workflows/cpp-tests.yml/badge.svg)
+
 # Lab1-Transport-Refactoring: Рефакторинг + UML-моделювання
 
 ## Опис проєкту
