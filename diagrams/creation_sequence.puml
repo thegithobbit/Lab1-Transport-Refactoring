@@ -1,0 +1,22 @@
+@startuml
+actor User
+participant Main
+participant TransportFactory
+participant "SpecificTransport:Car" as Car
+
+User -> Main: Launch program
+Main -> TransportFactory: createTransport("Car", "Tesla", ...)
+activate TransportFactory
+TransportFactory -> Car: new Car(...)
+activate Car
+Car --> TransportFactory: instance created
+deactivate Car
+TransportFactory --> Main: shared_ptr<Transport>
+deactivate TransportFactory
+
+Main -> Car: performSpecialAction1()
+activate Car
+Car -> Car: updateSpeed()
+Car --> Main: "Turbo activated!"
+deactivate Car
+@enduml
