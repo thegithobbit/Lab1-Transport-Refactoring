@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FFA3FE
+
+title Діаграма станів студента під час виконання лабораторних (pain)
+
+[*] --> ReceivedLab : Завдання отримано
+ReceivedLab --> Procrastinating : "Час ще є! ☺️"
+
+state Procrastinating {
+  [*] --> WatchingTiktok
+  WatchingTiktok --> ThinkingYouHaveStillGotTime
+  ThinkingYouHaveStillGotTime --> WatchingTiktok
+}
+
+Procrastinating --> TryingNotToPanic : ААААААА!!!! ДЕДЛАЙН ЗАВТРА!!!
+TryingNotToPanic --> StartingLab : Просимо пораду в чатаджіпіті
+StartingLab --> Debugging <<Focus>> : "Хм... Наче працює..."
+Debugging --> ActionsRed : Actions червоні в гітхабі ААААА
+ActionsRed --> Debugging : Шукаємо помилки
+
+Debugging --> Success <<Focus>> : Зелена галочка ураура
+Success --> PolishingTheLab : Оформлення документації
+PolishingTheLab --> Done : Робота здана до 00:00!
+
+Done --> SleepingOrWatchingTiktokAgain : Фух можна спати
+SleepingOrWatchingTiktokAgain --> [*]
+@enduml
