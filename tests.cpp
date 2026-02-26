@@ -5,17 +5,20 @@
 #include "Queue.h"
 
 void testCarTurbo() {
-    Car myCar("Tesla", 777, "Electric", 100, 2000, 5, 500);
-    myCar.turboBoost();
-    // перевіряємо, чи швидкість зросла на 20%
-    std::cout << "Test Car Turbo: Manual check needed (speed should be 120)\n";
+    Car myCar("Tesla", 777, "Electric", 100.0, 2000.0, 5, 500.0);
+    
+    myCar.performSpecialAction1();
+
+    assert(myCar.getSpeed() == 120.0);
+    std::cout << "Test Car Turbo: PASSED (Speed is 120)\n";
 }
 
 void testLinkedListQueue() {
     LinkedListQueue queue;
-    auto car = std::make_shared<Car>("TestCar", 1, "Gas", 50, 1000, 4, 100);
+    auto car = std::make_shared<Car>("TestCar", 1, "Gas", 50.0, 1000.0, 4, 100.0);
     queue.insert(car);
     assert(!queue.empty());
+    
     auto popped = queue.pop();
     assert(popped->getPriority() == car->getPriority());
     assert(queue.empty());
@@ -23,17 +26,20 @@ void testLinkedListQueue() {
 }
 
 void testPriority() {
-    // перевірка логіки пріоритетів
-    Bicycle bike("Cube", 12, 20, 15);
+    Bicycle bike("Cube", 12, 20.0, 15.0);
     assert(bike.getPriority() == 20);
+
+    Car car("Tesla", 777, "Electric", 100.0, 2000.0, 5, 500.0);
+    assert(car.getPriority() == 150);
+    
     std::cout << "Test Priority: PASSED\n";
 }
 
 int main() {
-    std::cout << "--- Running Unit Tests ---\n";
+    std::cout << "\n--- Running Refactored Unit Tests ---\n";
+    testCarTurbo();
     testLinkedListQueue();
     testPriority();
-    testCarTurbo();
-    std::cout << "--- All tests completed ---\n";
+    std::cout << "--- All tests completed successfully! ---\n";
     return 0;
 }
