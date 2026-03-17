@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+
+actor Dispatcher as D
+actor "QA Engineer" as QA
+
+rectangle "Transport Management System" {
+  usecase "Configure initial fleet\n(create Transport objects)" as UC_Configure
+  usecase "View transport information" as UC_ViewInfo
+  usecase "Trigger special actions\n(performSpecialAction1/2)" as UC_SpecialActions
+  usecase "Run unit tests" as UC_RunTests
+}
+
+D --> UC_Configure
+D --> UC_ViewInfo
+D --> UC_SpecialActions
+
+QA --> UC_RunTests
+
+UC_SpecialActions .> UC_ViewInfo : <<includes>>
+
+@enduml
