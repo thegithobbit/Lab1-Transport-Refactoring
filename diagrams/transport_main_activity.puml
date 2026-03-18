@@ -1,0 +1,19 @@
+@startuml
+start
+
+:Start program (main);
+:Create transport objects\nvia TransportFactory;
+:Add created objects to Queue;
+
+repeat
+  :Take next Transport\nfrom Queue;
+  :Print basic info\n(printInfo);
+  :Call performSpecialAction1();
+
+  if (Second action needed?) then (yes)
+    :Call performSpecialAction2();
+  endif
+repeat while (More transport objects?) is (yes)
+
+stop
+@enduml
